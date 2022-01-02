@@ -2,6 +2,7 @@ name: Node.js CI
 
 on:
   push:
+  pull_request:
   schedule:
     - cron:  '0 16 * * *'
     # 使用的格林威治时间，比北京时间早8小时，如果设置凌晨0:00执行，则应写为 '0 16 * * *'
