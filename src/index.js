@@ -81,7 +81,7 @@ const { homeCheck } = require('./functions/home')
     }
 
     // 设置打卡时间
-    await read.question('是否设置定时自动打卡？(\'y\'): ').then(async (input) => {
+    await read.question('是否设置定时自动打卡？(y确定，n否定): ').then(async (input) => {
       if (input == 'y') {
         await read.question('设置打卡时间，小时(\'0-23\'): ', (input) => { setting.h = input })
         await read.question('设置打卡时间，分钟(\'0-59\'): ', (input) => { setting.m = input })
