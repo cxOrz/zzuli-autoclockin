@@ -87,10 +87,12 @@ const { homeCheck } = require('./functions/home')
         await read.question('设置打卡时间，分钟(\'0-59\'): ', (input) => { setting.m = input })
         console.log(`你的打卡时间为每天${setting.h}:${setting.m}`)
         console.log('监听中，可以最小化窗口，请勿关闭...(CTRL+D退出)')
-        setInterval(() => {
+        setInterval(async () => {
           const now = new Date()
           if (now.getMinutes() == setting.m && now.getHours() == setting.h) {
             addAttributes(info, wj_type)
+            // 重新登录，更新身份凭证
+            tokens = await login(setting.user_code, setting.password)
             postToSever(tokens, info, () => {
               if (wj_type == 0) {
                 writeInfo(JSON.stringify(info), 'home', () => { console.log('居家信息已写入本地！') })
