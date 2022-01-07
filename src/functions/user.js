@@ -249,6 +249,7 @@ exports.addAttributes = (obj, wj_type) => {
     obj.other = ''
     obj.no_yy = ''
     obj.no_jtyy = ''
+    obj.glztlb = ''
     obj.hb_date = ''
     obj.jz_qzbl = ''
     obj.tz_qzbl = ''
