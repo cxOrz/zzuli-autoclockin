@@ -43,14 +43,14 @@ exports.homeCheck = async(info, read) => {
       default: info.jjymqk = '未接种'
     }
   })
-  await read.question('7月22日以来核酸检测次数(\'0-99\'): ', (i) => {
+  await read.question('10月以来核酸检测次数(\'0-99\'): ', (i) => {
     if (i <= 0) {
       info.hsjcqk = '未检测'
     } else if (i <= 6) {
       info.hsjcqk = `${i}次`
     } else info.hsjcqk = '更多次'
   })
-  await read.question('最后一次检测时间，格式\'2021-08-02\'注意0，无\'n\'): ', (i) => {
+  await read.question('最后一次检测时间，格式\'2022-01-02\'注意0，无\'n\'): ', (i) => {
     if (i == 'n') {
       info.last_time = ""
     } else info.last_time = i
