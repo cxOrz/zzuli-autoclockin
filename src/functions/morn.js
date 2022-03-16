@@ -16,13 +16,13 @@ exports.morningCheck = async (info, read) => {
   await read.question('输入居住省(河南省): ', (i) => { info.jz_province = i })
   await read.question('输入居住市/县(郑州市): ', (i) => { info.jz_city = i })
   await read.question('输入居住区(中原区、金水区...): ', (i) => { info.jz_district = i })
-  await read.question('输入在i轻工大上定位所得结果(河南省郑州市中原区沟赵乡中豫医说堂郑州轻工业大学教师公寓...): ', (i) => { info.jz_address = i })
+  await read.question('输入在i轻工大上定位所得结果(河南省郑州市中原区郑州轻工业大学软件学院): ', (i) => { info.jz_address = i })
   await read.question('以上输入的省、市、区，是否与i轻工大定位结果对应一致(\'y\'): ', (i) => {
     if (i == 'y') info.jz_sfyz = '是'
     else info.jz_sfyz = '否'
   })
   console.log('经纬度查询https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat，必须与定位一致')
-  await read.question('所在经纬度(\'如：113.50257,34.81035\',注意英文逗号): ', (input) => {
+  await read.question('所在经纬度(\'如：113.508273,34.811716\',注意英文逗号): ', (input) => {
     info.lon = Number(input.substring(0, input.indexOf(',')))
     info.lat = Number(input.substring(input.indexOf(',') + 1, input.length))
     info.gcj_lon = info.lon
@@ -55,14 +55,14 @@ exports.morningCheck = async (info, read) => {
       default: info.jjymqk = '未接种'
     }
   })
-  await read.question('7月22日以来核酸检测次数(\'0-99\'): ', (i) => {
+  await read.question('10月以来本轮郑州疫情核酸检测次数(\'0-99\'): ', (i) => {
     if (i <= 0) {
       info.hsjcqk = '未检测'
     } else if (i <= 6) {
       info.hsjcqk = `${i}次`
     } else info.hsjcqk = '更多次'
   })
-  await read.question('最后一次检测时间，格式\'2021-08-02\'注意0，无\'n\'): ', (i) => {
+  await read.question('最后一次检测时间，格式\'2022-02-18\'注意0，无\'n\'): ', (i) => {
     if (i == 'n') {
       info.last_time = ""
     } else info.last_time = i

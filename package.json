@@ -1,6 +1,6 @@
 {
   "name": "zzuli-autoclockin",
-  "version": "1.5.1",
+  "version": "1.5.8",
   "description": "ZZULI 郑州轻工业大学，疫情健康填报自动化",
   "main": "index.js",
   "scripts": {
