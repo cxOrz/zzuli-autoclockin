@@ -100,9 +100,9 @@ exports.login = (id, password) => {
                 http.get(location, {
                   headers: {
                     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-                    'Accept-Encoding': 'gzip, deflate, br',
-                    'Accept-Language': 'zh-CN,zh;q=0.9',
-                    'Cache-Control': 'no-cache',
+                    'Accept-Encoding': 'gzip, deflate',
+                    'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+                    'Cache-Control': 'max-age=0',
                     'Cookie': `PHPSESSID=${PHPSESSID}`,
                     'Host': 'msg.zzuli.edu.cn',
                     'Proxy-Connection': 'keep-alive',
@@ -156,24 +156,19 @@ exports.postToSever = (tokens, data, success = () => { }) => {
   const req = https.request(add, {
     method: 'POST',
     headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Accept-Encoding': 'gzip, deflate, br',
-      'Accept-Language': 'zh-CN,zh;q=0.9',
-      'Cache-Control': 'no-cache',
-      'Connection': 'keep-alive',
-      'Content-Type': 'application/json;charset=UTF-8',
-      'Cookie': `PHPSESSID=${tokens.PHPSESSID}; XSRF-TOKEN=${tokens.XSRF_TOKEN};laravel_session=${tokens.laravel_session}`,
       'Host': 'msg.zzuli.edu.cn',
-      'Origin': 'https://msg.zzuli.edu.cn',
-      'Pragma': 'no-cache',
-      'sec-ch-ua': '"Chromium";v="94", "Google Chrome";v="94", ";Not A Brand";v="99"',
-      'sec-ch-ua-mobile': '?1',
-      'sec-ch-ua-platform': "Android",
-      'Sec-Fetch-Dest': 'empty',
-      'Sec-Fetch-Mode': 'cors',
+      'Connection': 'keep-alive',
+      'Accept': 'application/json, text/plain, */*',
+      'X-XSRF-TOKEN': tokens.XSRF_TOKEN.replace(/\%3D/g, '='),
+      'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_1 like Mac OS X) AppleWebKit/603.1.30 (KHTML, like Gecko) Version/10.0 Mobile/14E304 Safari/602.1',
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Origin': `https://msg.zzuli.edu.cn`,
       'Sec-Fetch-Site': 'same-origin',
-      'User-Agent': 'Mozilla/5.0 (Linux; Android 12.0; Rammus) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Mobile Safari/537.36',
-      'X-XSRF-TOKEN': tokens.XSRF_TOKEN.replace(/\%3D/g, '=')
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Dest': 'empty',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Accept-Language': 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7',
+      'Cookie': `PHPSESSID=${tokens.PHPSESSID}; XSRF-TOKEN=${tokens.XSRF_TOKEN};laravel_session=${tokens.laravel_session}`
     }
   }, (res) => {
     let content = ''
