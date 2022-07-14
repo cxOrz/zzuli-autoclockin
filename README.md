@@ -1,7 +1,7 @@
-<h1 align="center">🎉 i 轻工大健康填报自动化 🎉</h1>
+<h1 align="center">🎉 i 轻工大疫情打卡工具 🎉</h1>
 <p align="center">
-  <img src="https://img.shields.io/badge/nodejs->=v8.5.4-brightgreen.svg" />
-  <img src="https://github.com/miaochenxi/zzuli-autoclockin/actions/workflows/node.js.yml/badge.svg" />
+  <img src="https://img.shields.io/badge/nodejs->=v12.16-brightgreen.svg" />
+  <img src="https://github.com/cxOrz/zzuli-autoclockin/actions/workflows/node.js.yml/badge.svg" />
 </p>
 
 基于 Nodejs ，实现自动考勤打卡，无需每日定闹钟提醒自己，无需担心被拉入黑群，也无需担心忘记打卡被点名批评。
@@ -13,7 +13,7 @@
 
 ## 环境 💻
 
-运行环境 Nodejs > v8.5.4，[Nodejs下载](https://nodejs.org/en/)
+运行环境 Nodejs > v12.16，[Nodejs下载](https://nodejs.org/en/)
 
 安卓、Windows、Linux ... 只要可以运行 Nodejs
 
@@ -21,34 +21,36 @@
 
 ### 方式一
 
-简单，但需要开着电脑，程序挂在后台,保证网络畅通。
+在本地运行，比较简单，只需两步。
 
-将仓库克隆到本地
-
-```bash
-git clone https://github.com/miaochenxi/zzuli-autoclockin.git
-```
-
-进入项目文件夹
+1、将仓库克隆到本地，进入项目目录安装依赖
 
 ```bash
-cd zzuli-autoclockin
+git clone https://github.com/cxOrz/zzuli-autoclockin.git && 
+cd zzuli-autoclockin && npm install
 ```
 
-运行
+2、运行
 
 ```bash
 npm run start
 ```
 
-或者
+### 方式二
 
-```bash
-cd src
-node index.js
+在服务器上部署，下列步骤以 Ubuntu21.04 为例。
+
+1. 使用ssh连接服务器，并克隆项目到服务器，假定你已克隆到 `~/zzuli-autoclockin` 目录。
+2. 运行 `sudo apt install screen` ，安装 screen 是为了后台运行本程序，以免断了ssh连接时程序也中断。
+3. 运行 `screen -S zzuli` 创建一个会话，我们要在这里面运行打卡程序。
+4. 进入项目目录，运行 `npm start` 进行打卡信息、时间设定，时间可以设为0点3分，学校的服务器时间要慢一两分钟，不放心可在睡前用手机看看是否已填报。
+5. 看到这样的输出就可以关闭ssh连接了，静候打卡成功：
+```
+你的打卡时间为每天0:3
+监听中，可以最小化窗口，请勿关闭...(CTRL+D退出)
 ```
 
-### 方式二
+### 方式三
 
 方便，利用 GitHub Actions 执行 Nodejs CI 定时任务，但需要细心和一定动手能力。
 
@@ -79,28 +81,6 @@ git clone 你的仓库地址
 
 7. 完成以上步骤后，commit 并 push ，任务将在指定时间执行，可在你仓库的 Actions 中查看运行结果
 ![](./docs/actions.png)
-
-### 方式三
-
-在云服务器上部署，下列步骤以 Ubuntu21.04 为例。
-
-1. 使用ssh连接服务器，并克隆项目到服务器，假定你已克隆到 `~/zzuli-autoclockin` 目录。
-2. 运行 `sudo apt install screen` ，安装 screen 是为了后台运行本程序，以免断了ssh连接时程序也中断。
-3. 运行 `screen -S zzuli` 创建一个会话，我们要在这里面运行打卡程序。
-4. 进入项目目录，运行 `npm start` 进行打卡信息、时间设定，时间可以设为0点3分，学校的服务器时间要慢一两分钟，不放心可在睡前用手机看看是否已填报。
-5. 看到这样的输出就可以关闭ssh连接了，静候打卡成功：
-```
-你的打卡时间为每天0:3
-监听中，可以最小化窗口，请勿关闭...(CTRL+D退出)
-```
-
-## 运行 ⚙
-
-`y` 一般对应确认，`n` 对应否定，什么都不输入按回车认定为与括号提示中相反的语义
-
-[查看图片1](./docs/1.png)
-[查看图片2](./docs/2.png)
-[查看图片3](./docs/3.png)
 
 ## 重要 ❗
 

@@ -2,6 +2,7 @@ const { getUserInfo, msg_xsc, add, log } = require("../api/config")
 const https = require('https')
 const http = require('http')
 const CryptoJS = require('../utils/crypto-js')
+const { lightGreen, blue } = require('kolorist')
 
 exports.user = {
   user_code: null,
@@ -176,10 +177,10 @@ exports.postToSever = (tokens, data, success = () => { }) => {
       content += chunk
     })
     res.on('end', () => {
-      console.log(content)
+      // console.log(content)
       let rs = JSON.parse(content)
       if (rs.code == 0) {
-        console.log(new Date().toLocaleTimeString() + '已完成打卡，查看' + this.successLogUrl(data.user_code))
+        console.log(lightGreen(new Date().toLocaleTimeString()) + ' 已完成打卡，查看' + blue(this.successLogUrl(data.user_code)))
         // 执行传入的回调函数
         success()
       } else console.log('打卡失败')
@@ -275,6 +276,7 @@ exports.addAttributes = (obj, wj_type) => {
     obj.xq_area = ''
     obj.xq_address = ''
     obj.home_time = ''
+    obj.jz_sfyz = "是"
     obj.wj_type = 0
   }
   else if (wj_type == 1) {
@@ -335,6 +337,8 @@ exports.addAttributes = (obj, wj_type) => {
     obj.xq_area = ""
     obj.xq_address = ""
     obj.home_time = ""
+    // 省、市、区，是否与i轻工大定位结果对应一致
+    obj.jz_sfyz = "是"
     obj.wj_type = 1
   }
 }

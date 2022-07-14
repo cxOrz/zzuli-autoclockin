@@ -1,6 +1,6 @@
 {
   "name": "zzuli-autoclockin",
-  "version": "1.5.8",
+  "version": "2.5.8",
   "description": "ZZULI 郑州轻工业大学，疫情健康填报自动化",
   "main": "index.js",
   "scripts": {
@@ -10,12 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/miaochenxi/zzuli-autoclockin.git"
+    "url": "https://github.com/cxOrz/zzuli-autoclockin.git"
   },
   "author": "mcx",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/miaochenxi/zzuli-autoclockin/issues"
+    "url": "https://github.com/cxOrz/zzuli-autoclockin/issues"
   },
-  "homepage": "https://github.com/miaochenxi/zzuli-autoclockin#readme"
+  "homepage": "https://github.com/cxOrz/zzuli-autoclockin#readme",
+  "dependencies": {
+    "kolorist": "^1.5.1",
+    "prompts": "^2.4.2"
+  }
 }
