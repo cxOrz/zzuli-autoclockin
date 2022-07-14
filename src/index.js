@@ -62,7 +62,7 @@ const { homeCheck } = require('./functions/home');
       })
       setting.user_code = answer.user_code
       answer = await prompts({
-        type: 'text',
+        type: 'password',
         name: 'password',
         message: '密码'
       }, {

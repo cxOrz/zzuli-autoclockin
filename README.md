@@ -17,6 +17,7 @@
 
 安卓、Windows、Linux ... 只要可以运行 Nodejs
 
+![](https://636c-cloudbase-1a4211-1252446325.tcb.qcloud.la/zzuli-autoclockin/zzuli-autoclockin-run.gif)
 ## 部署 🛠
 
 ### 方式一
