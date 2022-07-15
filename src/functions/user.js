@@ -199,8 +199,23 @@ exports.successLogUrl = (user_code) => {
   return log + encodeURIComponent(encrypted);
 }
 
-exports.addAttributes = (obj, wj_type) => {
-  // 处理date，补零
+exports.reminderCheck = (url) => {
+  return new Promise((resolve) => {
+    let data = ''
+    let date = this.generateDate()
+    https.get(url, (res) => {
+      res.on('data', chunk => data += chunk)
+      res.on('end', () => {
+        resolve(data.substring(2626, 2864).includes(date))
+      })
+    })
+  })
+}
+/**
+ * 
+ * @returns 一个date字符串，类似于 2022-07-01
+ */
+exports.generateDate = () => {
   let date = new Date()
   date = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
   if (date.substring(date.indexOf('-') + 1, date.lastIndexOf('-')).length == 1) {
@@ -209,6 +224,12 @@ exports.addAttributes = (obj, wj_type) => {
   if (date.substring(date.lastIndexOf('-') + 1, date.length).length == 1) {
     date = date.slice(0, date.length - 1) + '0' + date.charAt(date.length - 1)
   }
+  return date
+}
+
+exports.addAttributes = (obj, wj_type) => {
+  // 处理date，补零
+  let date = this.generateDate()
   // 判断在校晨检还是居家打卡
   if (wj_type == 0) {
     obj.date = date

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "(node ./src/index.js && echo 正在检查更新，若等待时间过长请挂代理... && git pull)|| (echo 正在检查更新，若等待时间过长请挂代理... && git pull)",
     "encrypt": "node ./src/utils/getBase64.js",
-    "action": "node ./src/action.js"
+    "action": "node ./src/action.js",
+    "remind": "node ./src/reminder.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   "homepage": "https://github.com/cxOrz/zzuli-autoclockin#readme",
   "dependencies": {
     "kolorist": "^1.5.1",
+    "nodemailer": "^6.7.7",
     "prompts": "^2.4.2"
   }
 }
