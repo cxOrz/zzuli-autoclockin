@@ -52,7 +52,7 @@ const questions = [
   {
     type: 'confirm',
     name: 'temperature',
-    message: '健康状态一切正常?',
+    message: '自身和同住人员健康状态一切正常?',
     initial: true
   },
   {
@@ -62,7 +62,8 @@ const questions = [
     choices: [
       { title: '未接种', value: '未接种' },
       { title: '未完成', value: '未完成接种' },
-      { title: '已接种', value: '已完成接种' }
+      { title: '已接种', value: '已完成接种' },
+      { title: '已完成加强针', value: '已完成加强针' }
     ],
     initial: 2
   },
@@ -70,13 +71,23 @@ const questions = [
     type: 'number',
     name: 'hsjcqk',
     message: '10月以来本轮郑州疫情核酸检测次数(0-99)',
-    initial: 0
+    initial: 7
   },
   {
     type: 'date',
     name: 'last_time',
     message: '最后一次检测时间',
     initial: new Date(2022, 6, 14)
+  },
+  {
+    type: 'select',
+    name: 'last_result',
+    message: '最后一次检测结果',
+    choices: [
+      { title: '阴性', value: '阴性' },
+      { title: '阳性', value: '阳性' }
+    ],
+    initial: 0
   },
   {
     type: 'select',

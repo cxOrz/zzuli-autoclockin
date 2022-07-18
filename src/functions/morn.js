@@ -91,7 +91,7 @@ const questions = [
   {
     type: 'confirm',
     name: 'temperature',
-    message: '健康状态一切正常?',
+    message: '自身和同住人员健康状态一切正常?',
     initial: true
   },
   {

@@ -252,7 +252,7 @@ exports.addAttributes = (obj, wj_type) => {
     obj.temp = '正常'
     obj.jrzz = '无'
     obj.jzqk = ''
-    obj.stzk = '无'
+    obj.stzk = '健康'
     obj.jcbl = '否'
     obj.jcqk = ''
     obj.yqgl = '否'
@@ -314,7 +314,7 @@ exports.addAttributes = (obj, wj_type) => {
     obj.temp = '正常'
     obj.jrzz = '无'
     obj.jzqk = ''
-    obj.stzk = '无'
+    obj.stzk = '健康'
     obj.jcbl = ''
     obj.jcqk = ''
     obj.yqgl = '否'
@@ -362,4 +362,9 @@ exports.addAttributes = (obj, wj_type) => {
     obj.jz_sfyz = "是"
     obj.wj_type = 1
   }
+  // 删除获取到的多余数据，尽量与官方数据内容保持一致
+  delete obj.user_type;
+  delete obj.spec_dm;
+  delete obj.org_dm;
+  delete obj.class_dm;
 }
