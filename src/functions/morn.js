@@ -74,7 +74,7 @@ const questions = [
     message: '在i轻工大上定位所得结果'
   },
   {
-    type: 'number',
+    type: 'text',
     name: 'lon',
     message: () => {
       console.log('根据位置获取经纬度https://lbs.amap.com/demo/jsapi-v2/example/map/click-to-get-lnglat')
@@ -83,7 +83,7 @@ const questions = [
     initial: "113.508931"
   },
   {
-    type: 'number',
+    type: 'text',
     name: 'lat',
     message: '纬度',
     initial: "34.81148"
@@ -137,6 +137,8 @@ exports.morningCheck = async (info) => {
     }
   });
   delete response.temperature
+  response.lon = Number(response.lon)
+  response.lat = Number(response.lat)
   Object.assign(info, response)
   info.gcj_lon = response.lon
   info.gcj_lat = response.lat

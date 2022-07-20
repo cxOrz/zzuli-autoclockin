@@ -42,7 +42,7 @@ cd zzuli-autoclockin && npm install
 2、运行
 
 ```bash
-npm run start
+npm start
 ```
 
 ### 方式二
